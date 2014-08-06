@@ -92,6 +92,6 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 
 try:
-    from local_settings import *
+    from war.local_settings import *
 except ImportError:
     pass

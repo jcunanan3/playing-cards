@@ -89,3 +89,9 @@ class SyntaxTest(TestCase):
             warnings.extend(run_pep8_for_package(package, extra_ignore=("_settings",)))
         if warnings:
             self.fail("{0} Syntax warnings!\n\n{1}".format(len(warnings), "\n".join(warnings)))
+
+def test_profile(self):
+        response = self.client.get(reverse('profile'))
+        # Check it's a redirect to the profile page
+        self.assertIn("<p>Hi {{ user.username }}, you have {{wins}} wins and {{losses}} losses.</p>", response.content)
+        self.assertIsInstance(response, HttpResponse)

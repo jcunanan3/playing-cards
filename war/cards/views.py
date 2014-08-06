@@ -50,8 +50,11 @@ def suit_filter(request):
 
 @login_required
 def profile(request):
+    losses = len(WarGame.results.filter(results='loss'))
+    wins = len(WarGame.results.all().filter(results='win'))
+
     return render(request, 'profile.html', {
-        'games': WarGame.objects.filter(player=request.user)
+        'games': WarGame.objects.filter(player=request.user), 'wins':wins, 'losses':losses
     })
 
 
